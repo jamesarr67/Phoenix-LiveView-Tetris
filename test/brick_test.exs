@@ -60,5 +60,21 @@ defmodule BrickTest do
       assert actual_points == [{3, 3}, {3, 4}, {3, 5}, {3, 6}]
   end
 
+  test "should flip, rotate, and mirror" do
+    [{1, 1}]
+    |> Points.mirror
+    |> assert_point({4, 1})
+    |> Points.flip
+    |> assert_point({4, 4})
+    |> Points.rotate_90
+    |> assert_point({1, 4})
+    |> Points.rotate_90
+    |> assert_point({1, 1})
+  end
+
+  def assert_point([actual], expected) do
+    assert actual == expected
+    [actual]
+  end
 
 end
